@@ -1,6 +1,6 @@
-# STAGE 1 - Bare minimum
+# STAGE 2 - Slash commands
 
-This stage of the repository contains the stage where we do an initial connection with slack and consists initilazation of our repository
+This stage of the repository contains the stage where we create a slash command and properly respond to it via blocks.
 ### How to run:
 
 Get the necessary credentials for your bot 

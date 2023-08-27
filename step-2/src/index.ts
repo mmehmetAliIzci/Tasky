@@ -1,5 +1,6 @@
 import { App } from '@slack/bolt';
 import { parseTaskCommand } from './commandUtils/parseCommand';
+import { addAssigneeSuccess, createTaskSuccess, helpBlock, nextSuccess, removeAssigneeSuccess, removeTaskSuccess } from './commandUtils/slackBlocks';
 
 // Initializes your app with your bot token and signing secret
 const app = new App({
@@ -16,27 +17,31 @@ app.command('/tasky', async ({ command, ack, say, client }) => {
 
         switch (operation) {
         case 'create': {
-            await say({ text: `task name: ${nameOfTheTask} with create called for user ${users?.[0]}` });
+            await say({ blocks: createTaskSuccess(nameOfTheTask) });
             return;
         }
         case 'remove': {
-            await say({ text: 'remove called' });
+            await say({ blocks: removeTaskSuccess(nameOfTheTask) });
             return;
         }
         case 'add-assignee': {
-            await say({ text: 'add-assignee called' });
+            let userNames = users?.join(' ') ?? '';
+            await say({ blocks: addAssigneeSuccess(nameOfTheTask, userNames) });
             return;
         }
         case 'remove-assignee': {
-            await say({ text: 'remove-assignee called' });
+            let userNames = users?.join(' ') ?? '';
+            await say({ blocks: removeAssigneeSuccess(nameOfTheTask, userNames) });
             return;
         }
         case 'next': {
-            await say({ text: 'next called' });
+            await say({ blocks: nextSuccess(nameOfTheTask, users?.[0] ?? '') });
             return;
         }
         case 'help': {
-            await say({ text: 'help called' });
+            await say({
+                blocks: helpBlock
+            });
             return;
         }
         default: {
