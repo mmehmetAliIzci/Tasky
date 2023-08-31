@@ -1,0 +1,37 @@
+{
+  "name": "mongodb-be",
+  "version": "1.0.0",
+  "description": "Our BE for accessing mongo.",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "ts-node-dev --respawn --pretty --transpile-only src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier . --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mongodb-developer/mongodb-typescript-example.git"
+  },
+  "keywords": [
+    "mongodb",
+    "typescript",
+    "express",
+    "atlas"
+  ],
+  "author": "Mehmet ali IZCI",
+  "license": "Apache 2.0",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongodb": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.4.7",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5",
+    "prettier": "^2.3.2"
+  }
+}
