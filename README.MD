@@ -16,9 +16,9 @@ You can either follow each step individually to understand the building blocks o
 
 ---
 
-## If You Skip to Step 3
+## If You Want to Skip to Step 3
 
-If you decide to skip to this stage, the backend (/be) will be set up to connect to MongoDB, and the Slack plugin (/plugin) will be operational.
+If you decide to skip the tutorial and go directly to end result, we need to set up and connect to MongoDB, and create our slack bot.
 
 ### Running the Backend and Exposing It
 
