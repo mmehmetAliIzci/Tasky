@@ -11,8 +11,8 @@ You can either follow each step individually to understand the building blocks o
 
 ## TL:DR;
 
-![end-1](./images//end-1.mov)
-![end-2](./images//end-2.mov)
+![end-1](./images/1.mp4)
+![end-2](./images/2.mp4)
 
 ---
 
