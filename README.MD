@@ -34,7 +34,8 @@ If you decide to skip the tutorial and go directly to end result, we need to set
 
 1. Create a new Slack bot and choose the 'From Manifest' option.
 2. Replace the "url" field in the JSON configuration with your own URL. The URL structure is crucial for the functioning of the bot:
-   ```
+
+```
 {
     "display_information": {
         "name": "TaskAssigner"
@@ -78,6 +79,7 @@ If you decide to skip the tutorial and go directly to end result, we need to set
     }
 }
 ```
+
 3. Note down the `SLACK_SIGNING_SECRET` from the "Basic Information" section.
 4. Install the bot to your workspace and get the `SLACK_BOT_TOKEN`.
 
