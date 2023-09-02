@@ -31,9 +31,9 @@ const express_1 = __importDefault(require("express"));
 const TaskController = __importStar(require("../controller/tasks"));
 exports.tasksRouter = express_1.default.Router();
 exports.tasksRouter.use(express_1.default.json());
-exports.tasksRouter.post("/task/add", TaskController.addTask);
-exports.tasksRouter.post("/task/remove", TaskController.removeTask);
-exports.tasksRouter.post("/task/add-assignee", TaskController.addAssignee);
-exports.tasksRouter.post("/task/remove-assignee", TaskController.removeAssignee);
-exports.tasksRouter.post("/task/next-assignee", TaskController.getNextAssignee);
+exports.tasksRouter.post("/add", TaskController.addTask);
+exports.tasksRouter.post("/remove", TaskController.removeTask);
+exports.tasksRouter.post("/add-assignee", TaskController.addAssignee);
+exports.tasksRouter.post("/remove-assignee", TaskController.removeAssignee);
+exports.tasksRouter.post("/next-assignee", TaskController.getNextAssignee);
 //# sourceMappingURL=tasks.router.js.map

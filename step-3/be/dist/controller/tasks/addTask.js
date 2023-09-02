@@ -13,16 +13,12 @@ exports.addTask = void 0;
 const database_service_1 = require("../../services/database.service");
 const addTask = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { name, ownerTeamId, assignees } = req.body;
+        const { name, assignees } = req.body;
         const task = yield database_service_1.collections.tasks.findOne({ name: name });
         if (task) {
             throw new Error("This task name already exists");
         }
-        if (!(assignees === null || assignees === void 0 ? void 0 : assignees.length)) {
-            throw new Error("Please specify assignees");
-        }
-        // Add new people if they not exists in db
-        const newTask = { name, ownerTeamId, assignees };
+        const newTask = { name, assignees };
         const result = yield database_service_1.collections.tasks.insertOne(newTask);
         result
             ? res.status(201).send({

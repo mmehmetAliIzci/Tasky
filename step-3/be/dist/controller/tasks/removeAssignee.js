@@ -28,10 +28,10 @@ const removeAssignee = (req, res) => __awaiter(void 0, void 0, void 0, function*
         if (task.currentAssignee === assignee) {
             throw new Error("You can't remove an assignee that is currently assigned to this task");
         }
-        task.assignees = [...task.assignees.filter((a) => a !== assignee)];
+        const newAssignees = [...task.assignees.filter((a) => a !== assignee)];
         const query = { name };
         // $set adds or updates all fields
-        const result = yield database_service_1.collections.tasks.updateOne(query, { $set: { task } });
+        const result = yield database_service_1.collections.tasks.updateOne(query, { $set: { assignees: newAssignees } });
         result
             ? res.status(200).send({
                 message: `Successfully updated a new task with name ${name}`,

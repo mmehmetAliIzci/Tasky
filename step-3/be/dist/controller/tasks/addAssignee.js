@@ -22,10 +22,10 @@ const addAssignee = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             throw new Error("This task doesnt exists");
         }
         // desctructring to remove duplicates
-        task.assignees = [...task.assignees, ...assignees];
+        const newAssignees = [...task.assignees, ...assignees];
         const query = { name };
         // $set adds or updates all fields
-        const result = yield database_service_1.collections.tasks.updateOne(query, { $set: { task } });
+        const result = yield database_service_1.collections.tasks.updateOne(query, { $set: { assignees: newAssignees } });
         result
             ? res.status(200).send({
                 message: `Successfully updated a new task with name ${name}`,

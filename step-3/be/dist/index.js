@@ -11,7 +11,7 @@ const port = 8080; // default port to listen
 (0, database_service_1.connectToDatabase)()
     .then(() => {
     // send all calls from /tasks to our tasksRouter
-    app.use("/tasks", tasks_router_1.tasksRouter);
+    app.use("/task", tasks_router_1.tasksRouter);
     // start the Express server
     app.listen(port, () => {
         console.log(`Server started at http://localhost:${port}`);

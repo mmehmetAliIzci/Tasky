@@ -40,14 +40,13 @@ const getNextAssignee = (req, res) => __awaiter(void 0, void 0, void 0, function
             throw new Error("No assignees found");
         }
         let nextAssignee = roundRobin(task.currentAssignee, task.assignees);
-        task.currentAssignee = nextAssignee;
         const query = { name };
         // $set adds or updates all fields
-        const result = yield database_service_1.collections.tasks.updateOne(query, { $set: { task } });
+        const result = yield database_service_1.collections.tasks.updateOne(query, { $set: { currentAssignee: nextAssignee } });
         result
             ? res.status(200).send({
                 message: `Successfully updated a new task with name ${name}`,
-                task: task,
+                assignee: nextAssignee,
             })
             : res.status(304).send(`Task with name: ${name} not updated`);
     }

@@ -1,21 +1,25 @@
-## What is this cod
+## Step 3: Backend Architecture and Functionality
 
-Nothing unusual here. Classic BE concept with Models, routes and services =>  We have model that represents our desired structure on what to store, controllers that does all the alterations and inserts to the db, and routes that expose our services to world wide web.
+### Overview
 
-Here is how you can walk through the BE repository:
+The backend of this project adheres to a classic design pattern involving Models, Controllers, and Routes. Specifically, we've engineered a Task model to meet our data storage requirements, Controllers for database operations, and Routes to expose our services to the web.
 
-1) Check models and understand our data structure. You will see that there is only one model called Tasks. My first iteration was creating Person and Tasks models. But i’ve realized only thing we need to store in Tasks was the id’s of the users. So this means we dont need Person model at all.
+### Walkthrough
 
-2) Next go to controllers. Here are all the operations that i’ve created for our system to work. ITs not bullet proof but there are most common error handling to make sure user is using our be correctly and not all the data passed through. These methods are basic CRUD operations on mongodb. Make sure you understand this code since this will handle all the database logic and alterations.
+1) **Models**: Initially, we designed two models: Person and Task. However, upon further analysis, it became clear that the Task model suffices. The Task model solely stores the user IDs, negating the need for the Person model.
 
-3) Head to routers and check the routes that are exposed via express from BE. 
+2) **Controllers**: This section houses the operations necessary for our system. While not bulletproof, the code includes essential error-handling to ensure correct usage. These methods primarily involve CRUD operations in MongoDB, and understanding them is crucial as they manage all database logic and modifications.
 
-4) on services you can find the connector that connects us to mongodb and creates the json validations for our collection
+3) **Routes**: Here you can find the routes exposed by the backend via Express.
 
+4) **Services**: This is where the MongoDB database connector resides. This service also defines JSON validation for our collections.
 
-## How to run
+### How to Run
 
-- `yarn`
-- copy `env.template`. Get the connection string from mongodb and if you dont have any database yet, give it a random name. Mongo will take care of the creation of the db since its not there and its on demand.
-- `yarn start` will start our server on 8080. But guess what, we want an https server.
-- `ssh -o ServerAliveInterval=60 -R be-kumbaya-my-lord-kumbaya:80:localhost:8080 serveo.net`
+- First, execute `yarn` to install dependencies.
+- Copy `env.template` and populate it with the MongoDB connection string. If you haven't yet set up a database, simply name it arbitrarily; MongoDB will create it on-demand.
+- Run `yarn start` to initialize the server on port 8080. However, for HTTPS support, proceed to the next step.
+- To forward the server to HTTPS, run the following SSH command: 
+```
+ssh -o ServerAliveInterval=60 -R be-kumbaya-my-lord-kumbaya:80:localhost:8080 serveo.net
+```
