@@ -17,9 +17,12 @@ func NewServer(listenAddr string, store storage.Storage) *Server {
 
 func (s *Server) Start() error {
 	router := gin.Default()
-	router.GET("/tasks/:id", s.handleGetTaskById)
-	router.GET("/tasks", s.getTasks)
-	router.POST("/tasks", s.postTask)
+
+	router.POST("/task/add", s.AddTask)
+	router.POST("/task/remove", s.RemoveTask)
+	router.POST("/task/add-assignee", s.AddAssignee)
+	router.POST("/task/remove-assignee", s.RemoveAssignee)
+	router.POST("/task/next-assignee", s.GetNextAssignee)
 
 	return router.Run(s.listenAddr)
 }

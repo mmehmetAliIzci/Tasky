@@ -1,20 +1,24 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"log"
+	"os"
 	"tasky/web-service-gin/api"
+	"tasky/web-service-gin/config"
 	"tasky/web-service-gin/storage"
 )
 
 func main() {
-	listenAddr := flag.String("listenaddr", ":3000", "address to listen on")
-	flag.Parse()
+	// Load Environment Variables
+	config.LoadEnv()
+
+	port := os.Getenv("PORT")
 
 	store := &storage.MongoStorage{}
-	server := api.NewServer(*listenAddr, store)
+	store.InitDB()
+	server := api.NewServer(port, store)
 
-	fmt.Printf("Starting server on %s\n", *listenAddr)
+	fmt.Printf("Starting server on %s\n", port)
 	log.Fatal(server.Start())
 }
